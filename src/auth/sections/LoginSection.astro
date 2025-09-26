@@ -1,4 +1,6 @@
 ---
+import type { Session } from '@auth/core/types';
+import { Auth, SignOut, SignIn } from 'auth-astro/components';
 
 ---
 
@@ -53,220 +55,70 @@
     class="flex items-center justify-center px-5 sm:px-10 lg:px-0 md:rounded-none md:mt-0 rounded-b-none rounded-4xl z-20 mt-[-50px] bg-theme-white pt-10"
   >
     <div class="w-full max-w-md">
-      <div id="loginState" class="transition-all duration-300">
-        <div id="userTypeSelection" class="w-full">
-          <h2 class="text-3xl font-bold mb-10 text-center">¿Cómo deseas ingresar?</h2>
-          <div class="grid grid-cols-1  gap-8 mb-8">
-            <!-- Tarjeta Estudiante -->
-            <button
-              onclick="showLoginForm('student')"
-              class="group bg-white text-theme-rich-black border-2 border-b-8 border-theme-rich-black font-medium p-8 rounded-3xl hover:bg-theme-amber/5 transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-theme-amber/20 text-left h-full flex flex-col"
-            >
-              <div class="flex items-start mb-6">
-                <div class="mr-6 w-16 h-16 bg-theme-amber rounded-2xl flex items-center justify-center group-hover:bg-theme-amber transition-colors duration-300">
-                  <span class="text-2xl">👨‍🎓</span>
-                </div>
-                <div>
-                  <h3 class="font-bold text-2xl mb-2">Estudiante</h3>
-                  <p class="text-base font-light text-gray-600">Una forma más fácil de interactuar.</p>
-                </div>
-              </div>
-              <div class="mt-auto pt-4 border-t border-theme-rich-black/20">
-                <div class="flex items-center text-theme-amber font-medium">
-                  <span>Ingresar como estudiante</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
-                </div>
-              </div>
-            </button>
+      <div id="loginForm" class="transition-all duration-300">
+        <h2 id="formTitle" class="text-2xl font-bold mb-6"></h2>
 
-            <!-- Tarjeta Docente -->
-            <button
-              onclick="showLoginForm('instructor')"
-              class="group bg-white text-theme-rich-black border-2 border-b-8 border-theme-rich-black font-medium p-8 rounded-3xl hover:bg-theme-amber/5 transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-theme-amber/20 text-left h-full flex flex-col"
-            >
-              <div class="flex items-start mb-6">
-                <div class="mr-6 w-16 h-16 bg-theme-amber rounded-2xl flex items-center justify-center group-hover:bg-theme-amber-dark transition-colors duration-300">
-                  <span class="text-2xl">👩‍🏫</span>
-                </div>
-                <div>
-                  <h3 class="font-bold text-2xl mb-2">Docente</h3>
-                  <p class="text-base font-light text-gray-600">No te quedes atrás y aprende con nosotros.</p>
-                </div>
-              </div>
-              <div class="mt-auto pt-4 border-t border-theme-rich-black/20">
-                <div class="flex items-center text-theme-amber font-medium">
-                  <span>Ingresar como docente</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+          <p class="text-blue-800 text-sm">
+            <strong>Autenticación con Google:</strong> Serás redirigido a Google
+            para iniciar sesión de forma segura.
+          </p>
+        </div>
+        <Auth>
+          {(session: Session) => (
+            <>
+              {session ? 
+                <SignOut>Logout</SignOut>
+              :
+                <SignIn provider="google" class="w-full md:w-xs lg:w-full bg-white text-theme-rich-black border-2 border-b-4 border-theme-rich-black font-medium py-3 px-6 rounded-2xl hover:bg-gray-50 transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl">
+                  <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24">
+                    <path
+                      fill="#4285F4"
+                      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                    ></path>
+                    <path
+                      fill="#34A853"
+                      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                    ></path>
+                    <path
+                      fill="#FBBC05"
+                      d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                    ></path>
+                    <path
+                      fill="#EA4335"
+                      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                    ></path>
                   </svg>
-                </div>
-              </div>
-            </button>
+                  Continuar con Google
+                </SignIn>
+              }
+          
+              <p>
+                {session ? `Logged in as ${session.user?.name}` : 'Not logged in'}
+              </p>
+            </>
+          )}
+        </Auth>
+        
 
-            <!-- Tarjeta Administrador -->
-            <button
-              onclick="showLoginForm('administrator')"
-              class="group bg-white text-theme-rich-black border-2 border-b-8 border-theme-rich-black font-medium p-8 rounded-3xl hover:bg-theme-amber/5 transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-theme-amber/20 text-left h-full flex flex-col"
-            >
-              <div class="flex items-start mb-6">
-                <div class="mr-6 w-16 h-16 bg-theme-amber rounded-2xl flex items-center justify-center group-hover:bg-theme-amber-dark transition-colors duration-300">
-                  <span class="text-2xl">👨‍💼</span>
-                </div>
-                <div>
-                  <h3 class="font-bold text-2xl mb-2">Administrador</h3>
-                  <p class="text-base font-light text-gray-600">Gestiona la plataforma.</p>
-                </div>
-              </div>
-              <div class="mt-auto pt-4 border-t border-theme-rich-black/20">
-                <div class="flex items-center text-theme-amber font-medium">
-                  <span>Ingresar como administrador</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
-                </div>
-              </div>
-            </button>
-          </div>
+        <div
+          class="w-full md:w-xs lg:w-full my-6 border-t border-theme-rich-black/20"
+        >
         </div>
 
-        <!-- Paso 2: Formulario de login (oculto inicialmente) -->
-        <div id="loginForm" class="hidden">
-          <div class="flex items-center mb-6 cursor-pointer" onclick="showUserTypeSelection()">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-            </svg>
-            <span class="text-sm font-medium">Volver a selección</span>
-          </div>
-
-          <h2 id="formTitle" class="text-2xl font-bold mb-6"></h2>
-          
-          <form id="actualLoginForm">
-            <input type="hidden" id="userType" name="userType" value="">
-            
-            <div class="mb-10 md:mb-5 xl:mb-10">
-              <label for="institutionalEmail" class="block text-sm font-bold">
-                Correo Institucional <span class="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                id="institutionalEmail"
-                name="institutionalEmail"
-                required
-                autocomplete="username"
-                class="w-full md:w-xs lg:w-full border rounded-md px-4 py-2 mt-1 border-theme-rich-black/40"
-              />
-            </div>
-
-            <div class="mb-10 md:mb-5 xl:mb-10">
-              <label for="password" class="block text-sm font-bold">
-                Contraseña <span class="text-red-500">*</span>
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                required
-                autocomplete="current-password"
-                class="w-full md:w-xs lg:w-full border rounded-md px-4 py-2 mt-1 border-theme-rich-black/40"
-              />
-            </div>
-
-            <button
-              type="submit"
-              class="w-full md:w-xs lg:w-full bg-theme-amber text-theme-rich-black border-2 border-b-8 border-theme-rich-black font-medium py-3 px-6 rounded-2xl hover:bg-theme-amber/90 transition-colors duration-200"
-            >
-              Iniciar sesión
-            </button>
-          </form>
-
-          <div class="w-full md:w-xs lg:w-full my-10 md:my-4 lg:my-10 border-t border-theme-rich-black/40"></div>
-
-          <div class="flex items-center justify-between mb-6 w-full md:w-xs lg:w-full">
-            <p class="mb-2 font-light">¿Tienes alguna duda?</p>
-            <a
-              href="/nosotros"
-              class="text-theme-amber hover:underline font-medium"
-            >
-              Contactate con nosotros
-            </a>
-          </div>
+        <div
+          class="flex items-center justify-between mb-6 w-full md:w-xs lg:w-full"
+        >
+          <p class="mb-2 font-light">¿Tienes alguna duda?</p>
+          <a
+            href="/nosotros"
+            class="text-theme-amber hover:underline font-medium"
+          >
+            Contactate con nosotros
+          </a>
         </div>
       </div>
+      
     </div>
   </div>
 </section>
-
-<script is:inline>
-  function showLoginForm(userType) {
-    const selection = document.getElementById('userTypeSelection');
-    const form = document.getElementById('loginForm');
-    const formTitle = document.getElementById('formTitle');
-    const userTypeInput = document.getElementById('userType');
-    
-    let title = '';
-    switch(userType) {
-      case 'student':
-        title = 'Inicio de sesión para Estudiantes';
-        break;
-      case 'instructor':
-        title = 'Inicio de sesión para Docentes';
-        break;
-      case 'administrator':
-        title = 'Inicio de sesión para Administradores';
-        break;
-    }
-    
-    formTitle.textContent = title;
-    userTypeInput.value = userType;
-    selection.classList.add('hidden');
-    form.classList.remove('hidden');
-  }
-  
-  function showUserTypeSelection() {
-    const selection = document.getElementById('userTypeSelection');
-    const form = document.getElementById('loginForm');
-    
-    selection.classList.remove('hidden');
-    form.classList.add('hidden');
-  }
-  
-  document.getElementById('actualLoginForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    
-    const payload = {
-      institutionalEmail: formData.get('institutionalEmail'),
-      password: formData.get('password')
-    };
-
-    fetch('http://localhost:8080/auth/login', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(async (response) => {
-      if (!response.ok) {
-        const error = await response.text();
-        console.error('Error de autenticación:', error);
-        alert('Credenciales inválidas o error de servidor.');
-        return;
-      }
-
-      return response.json();
-    })
-    .then(data => {
-      if (data?.token) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.userResponse));
-        window.location.href = `/dashboard/${data.userType}`;
-      }
-    })
-    .catch(error => {
-      console.error('Error en la petición:', error);
-    });
-  });
-</script>

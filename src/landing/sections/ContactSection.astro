@@ -2,9 +2,13 @@
 import ScrollingBanner from "@/landing/components/ScrollingBanner.astro";
 
 const frases = [
-  "¿No sabes por dónde empezar? 🧭",
-  "Hablar con un tutor puede marcar la diferencia 🗣️✨",
-  "Escríbenos con confianza, estamos para apoyarte 🤝",
+  "¿Te gustaría mejorar tu organización? 📅🛠️",
+  "Aquí estamos para ayudarte a organizar tu aprendizaje y avanzar de manera efectiva 📈💡",
+  "Cada paso que das es importante, y nosotros estamos contigo en cada uno de ellos 🚶‍♂️📚",
+  "No estás solo en este camino, te apoyamos en cada desafío 💪🎓",
+  "¡Juntos podemos lograr que tu experiencia de aprendizaje sea más fácil y clara! 🌟📘",
+  "No dejes que nada se te escape. Aquí tienes todas las herramientas para avanzar con éxito 🚀📊",
+  "Tu esfuerzo es valioso, y estamos aquí para asegurarnos de que sigas avanzando 🌱💼",
 ];
 
 ---
@@ -15,18 +19,18 @@ const frases = [
   <h3 class="text-2xl font-medium relative inline-block mt-10">
     CONTÁCTANOS AHORA
     <br />
-    <span class="text-theme-keppel text-4xl font-bold block mt-2">
+    <span class="text-theme-amber text-4xl font-bold block mt-2">
       ¿QUÉ MEDIO PREFIERES?
     </span>
 
-    <span class="block h-[2px] w-64 bg-theme-keppel mx-auto mt-6 transition-all duration-300 hover:w-120"></span>
+    <span class="block h-[2px] w-64 bg-theme-amber mx-auto mt-6 transition-all duration-300 hover:w-120"></span>
   </h3>
 
   <div class="flex flex-wrap justify-center gap-4 mt-10 px-4 sm:px-0">
     <a
       href="https://wa.me/51951011604"
       target="_blank"
-      class="flex items-center justify-center gap-2 bg-theme-keppel text-theme-rich-black px-6 py-4 w-90 rounded-2xl font-regular text-xl shadow-md transition hover:bg-theme-keppel/90"
+      class="flex items-center justify-center gap-2 bg-theme-amber text-theme-rich-black px-6 py-4 w-90 rounded-2xl font-regular text-xl shadow-md transition hover:bg-theme-amber/90"
     >
       <img src="/images/whatsapp-icon.svg" alt="icono de WhatsApp" class="w-6 h-6" />
       WhatsApp
@@ -43,7 +47,7 @@ const frases = [
 
     <a
       href="mailto:niltonencarnacion17@gmail.com"
-      class="flex items-center gap-2 justify-center bg-theme-blue text-theme-rich-black px-6 py-4 w-90 rounded-2xl font-regular text-xl shadow-md transition hover:bg-theme-blue/90"
+      class="flex items-center gap-2 justify-center bg-theme-shamrock-green text-theme-rich-black px-6 py-4 w-90 rounded-2xl font-regular text-xl shadow-md transition hover:bg-theme-shamrock-green/90"
     >
       <img src="/images/mail-icon.svg" alt="icono de correo" class="w-6 h-6" />
       Correo
@@ -54,7 +58,7 @@ const frases = [
     <div class="flex items-center justify-center">
       <div class="bg-white p-6 rounded-4xl shadow-brand-card w-xl h-full">
         <h4 class="text-xl font-bold mb-12 text-theme-rich-black text-left mt-4">Escribe tu mensaje</h4>
-        <form id="ContactGoogleForm" class="space-y-8 w-full max-w-xl" action="https://docs.google.com/forms/d/1wkknhkDpULjYI6tWxvOjZpAnyRTkP38PiokUpWMwuK8/formResponse" method="POST" target="hidden_iframe" novalidate>
+        <form id="ContactGoogleForm" class="space-y-8 w-full max-w-xl" action="https://docs.google.com/forms/d/1ORWFKdbj8Vwpn5mviKg7LSiIRwipenWUad7Bgn_4YWo/formResponse" method="POST" target="hidden_iframe" novalidate>
           <div class="flex flex-col md:flex-row gap-4">
             <div class="w-full">
               <span class="block text-sm font-medium text-theme-rich-black mb-1 text-left">Nombres <span class="text-red-600">*</span></span>
@@ -62,7 +66,7 @@ const frases = [
                 id="nombres"
                 name="entry.917920380"
                 type="text"
-                class="w-full px-4 py-3 border border-theme-rich-black/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-theme-keppel"
+                class="w-full px-4 py-3 border border-theme-rich-black/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-theme-amber"
               />
             </div>
             <div class="w-full">
@@ -71,18 +75,18 @@ const frases = [
                 id="apellidos"
                 name="entry.992539036"
                 type="text"
-                class="w-full px-4 py-3 border border-theme-rich-black/50  rounded-lg focus:outline-none focus:ring-2 focus:ring-theme-keppel"
+                class="w-full px-4 py-3 border border-theme-rich-black/50  rounded-lg focus:outline-none focus:ring-2 focus:ring-theme-amber"
               />
             </div>
           </div>
 
           <div>
-            <span class="block text-sm font-medium text-theme-rich-black mb-1 text-left">Correo institucional <span class="text-red-600">*</span></span>
+            <span class="block text-sm font-medium text-theme-rich-black mb-1 text-left">Correo <span class="text-red-600">*</span></span>
             <input
               id="correo"
               name="entry.1582120582"
               type="email"
-              class="w-full px-4 py-3 border border-theme-rich-black/50  rounded-lg focus:outline-none focus:ring-2 focus:ring-theme-keppel"
+              class="w-full px-4 py-3 border border-theme-rich-black/50  rounded-lg focus:outline-none focus:ring-2 focus:ring-theme-amber"
             />
           </div>
 
@@ -91,7 +95,7 @@ const frases = [
             <input
               name="entry.1317356111"
               type="tel"
-              class="w-full px-4 py-3 border border-theme-rich-black/50  rounded-lg focus:outline-none focus:ring-2 focus:ring-theme-keppel"
+              class="w-full px-4 py-3 border border-theme-rich-black/50  rounded-lg focus:outline-none focus:ring-2 focus:ring-theme-amber"
             />
           </div>
 
@@ -100,13 +104,13 @@ const frases = [
             <textarea
               name="entry.1510882835"
               rows="5"
-              class="w-full px-4 py-3 border border-theme-rich-black/50  rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-theme-keppel"
+              class="w-full px-4 py-3 border border-theme-rich-black/50  rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-theme-amber"
             ></textarea>
           </div>
 
           <button
             type="submit"
-            class="bg-theme-keppel text-theme-rich-black border-2 border-b-6 border-theme-rich-black font-medium py-3 px-6 rounded-4xl hover:bg-theme-keppel/90 transition-colors duration-200"
+            class="bg-theme-amber text-theme-rich-black border-2 border-b-6 border-theme-rich-black font-medium py-3 px-6 rounded-4xl hover:bg-theme-amber/90 transition-colors duration-200"
           >
             Enviar mensaje
           </button>
@@ -121,7 +125,7 @@ const frases = [
           <span class="font-bold">Tel:</span> +51 951 011 604
         </p>
         <p class="text-theme-rich-black font-regular">
-          <span class="font-bold">Correo:</span> <a href="mailto:trinup@gmail.com">niltonencarnacion17@gmail.com</a>
+          <span class="font-bold">Correo:</span> <a href="mailto:niltonencarnacion17@gmail.com">niltonencarnacion17@gmail.com</a>
         </p>
       </div>
 
@@ -151,7 +155,7 @@ const frases = [
 
     // Validación del correo manualmente
     let correo = form.querySelector("#correo");
-    let gmailPattern = /^[a-zA-Z0-9._%+-]+@uns\.edu.pe$/;
+    let gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 
     if (!gmailPattern.test(correo.value)) {
       valid = false;
